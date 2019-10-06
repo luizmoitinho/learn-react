@@ -9,52 +9,30 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  Image,
+  Dimensions
 } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Plataforma para controlar dados\n'+
-       'coletados em pesquisas e levantamentos de sensos.',
-  android: 'Plataforma para controlar dados\n'+
-           'coletados em pesquisas e levantamentos de sensos.',
-}); 
+;
+const widthScreen =Dimensions.get('screen').width;
+const HeightScreen =Dimensions.get('screen').height;
 
 export default class App extends Component{
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-            MTI Sensus
-        </Text>
-        <Text style={styles.instructions}>
-            Aplicativo para controle de sensos
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+      <View>
+        <View>
+          <Image source={require('./Resources/icons/icon-camera.png')}
+          style={{width:40,height:40}}></Image>
+          <Text>Instagram</Text>
+        </View>
+
+        <Image source={require('./Resources/Img/perfil.jpg')} 
+        style={{width:100,height:100,borderRadius:50}}/>
+        <Text>Luiz Moitinho</Text>
       </View>
-    );
+    );  
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 40,
-    textAlign: 'center',
-    margin: 10,
-    color:'#827',
-  },
-  instructions: {
-    fontSize:16,
-    fontWeight:'800',
-    textAlign: 'center',
-    color: '#333',
-    marginBottom: 5,
-  },
-});
