@@ -11,27 +11,39 @@ import {
   Text,
   View,
   Image,
-  Dimensions
+  Dimensions,
+  ScrollView,
+  FlatList
 } from 'react-native';
 
-;
 const widthScreen =Dimensions.get('screen').width;
-const HeightScreen =Dimensions.get('screen').height;
-
 export default class App extends Component{
   render() {
+    const  ListPhotographs = [
+      {id:1,user:'luiz Moitinho'},
+      {id:2,user:'Fernanda Souza'},
+      {id:3,user:'Wedson Texeira'},
+    ]   
     return (
       <View>
-        <View>
-          <Image source={require('./Resources/icons/icon-camera.png')}
-          style={{width:40,height:40}}></Image>
+        <View style={{backgroundColor:'#ccc', marginBottom:10}}>
+          <Image style={{width:50,height:30}} 
+             source={require('./Resources/icons/icon-camera.png')}/>
           <Text>Instagram</Text>
         </View>
 
-        <Image source={require('./Resources/Img/perfil.jpg')} 
-        style={{width:100,height:100,borderRadius:50}}/>
-        <Text>Luiz Moitinho</Text>
+        <FlatList style={{margin:5}}
+          keyExtractor = {(item) => item.id}
+          data={ListPhotographs} 
+          renderItem = {({item}) =>
+          <View >
+            <Text style={{fontSize:30}}>{item.user}</Text>
+            <Image source={require('./Resources/Img/perfil.jpg')}style={{width:widthScreen,height:widthScreen}}/>     
+          </View>
+        } 
+      />
       </View>
+     
     );  
   }
 }
