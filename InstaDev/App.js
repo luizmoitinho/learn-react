@@ -15,41 +15,83 @@ import {
   ScrollView,
   FlatList
 } from 'react-native';
+import Post from './src/components/Post'
+import { importNamespaceSpecifier } from '@babel/types';
 
 const widthScreen =Dimensions.get('screen').width;
 export default class App extends Component{
-  render() {
-    const  ListPhotographs = [
-      {id:1,user:'luiz Moitinho'},
-      {id:2,user:'Fernanda Souza'},
-      {id:3,user:'Wedson Texeira'},
-    ]   
-    return (
-      <View>
-        <View style={{backgroundColor:'#ccc', marginBottom:10}}>
-          <Image style={{width:50,height:30}} 
-             source={require('./Resources/icons/icon-camera.png')}/>
-          <Text>Instagram</Text>
-        </View>
-        {<FlatList 
-          
-          keyExtractor = {(item) => item.id}
-          data={ListPhotographs} 
-          renderItem = {({item}) =>
-          <View style={{margin:10}}>
-              <View style={{flexDirection:'row', alignItems:'center'}}>
-                <Image source={require('./Resources/Img/perfil.jpg')}
-                      style={{width:50,height:50,borderRadius:70,marginRight:20}}/>   
-                <Text style={{fontSize:20}}>{item.user}</Text>
-              </View>
-              <Image source={require('./Resources/Img/perfil.jpg')}
-                    style={{width:widthScreen,height:widthScreen}}/>     
-          </View>
-        } 
-      /> }
-      </View>
+render() {
+  const  ListPhotographs = [
+    {
+      id:1,
+      user:'luiz Moitinho',
+      perfil:require("./Resources/Img/luizPerfil.jpg"),
+      urlPost:require("./Resources/Img/post1.jpg")
+
+    },
+    {
+      id:2,
+      user:'luiz Moitinho',
+      perfil:require("./Resources/Img/luizPerfil.jpg"),
+      urlPost:require("./Resources/Img/post2.jpg")
+    }
      
-    );  
-  }
+  ] 
+  return (
+    <ScrollView style={style.container}>
+      <View style={style.nav}>
+        <Image style={style.navIcon} source={require('./Resources/icons/logoBranco.jpg')}/>
+        <Text style={style.logo}>Instagram</Text>
+      </View>
+      {
+       ListPhotographs.map((pic)=>
+        <Post key={ListPhotographs.id} ListPhotographs={pic} />
+      )
+      }
+      <View style={style.footer}>
+        <Text style={style.footerCopy}>
+          Todos os direitos reservados MTI &copy;
+          </Text>
+      </View>
+    </ScrollView>
+
+  );  
+}
 }
 
+const style = StyleSheet.create({
+  container:{
+    backgroundColor:"#fff"
+  },
+  nav:{
+    height:50,
+    flexDirection:'column',
+    marginBottom:10,
+    flexDirection:'row',
+    alignItems:'center',
+    borderBottomWidth:1,
+    borderEndColor:'#ccc',
+  },
+  navIcon:{    
+    width:50,
+    height:35,
+    marginRight:10
+  },
+  logo:{
+    fontSize:24,
+  },
+  footer:{
+    borderTopWidth:1,
+    borderTopColor:'#ccc',
+    marginTop:20,
+    width:widthScreen,
+    flexDirection:'row',
+    alignItems: 'center',
+    justifyContent:"center",
+    height:80,
+  },
+  footerCopy:{
+    color:'#4C4C4D',
+    fontSize:20,
+  }
+});
