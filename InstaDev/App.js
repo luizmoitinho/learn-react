@@ -31,17 +31,22 @@ export default class App extends Component{
              source={require('./Resources/icons/icon-camera.png')}/>
           <Text>Instagram</Text>
         </View>
-
-        <FlatList style={{margin:5}}
+        {<FlatList 
+          
           keyExtractor = {(item) => item.id}
           data={ListPhotographs} 
           renderItem = {({item}) =>
-          <View >
-            <Text style={{fontSize:30}}>{item.user}</Text>
-            <Image source={require('./Resources/Img/perfil.jpg')}style={{width:widthScreen,height:widthScreen}}/>     
+          <View style={{margin:10}}>
+              <View style={{flexDirection:'row', alignItems:'center'}}>
+                <Image source={require('./Resources/Img/perfil.jpg')}
+                      style={{width:50,height:50,borderRadius:70,marginRight:20}}/>   
+                <Text style={{fontSize:20}}>{item.user}</Text>
+              </View>
+              <Image source={require('./Resources/Img/perfil.jpg')}
+                    style={{width:widthScreen,height:widthScreen}}/>     
           </View>
         } 
-      />
+      /> }
       </View>
      
     );  
