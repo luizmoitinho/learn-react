@@ -67,7 +67,7 @@ export default class Post extends Component {
               <Image style={ picture.liked? style.liked:style.like } 
               source={this.loadIconeLike(picture.liked)} />
             </TouchableOpacity>
-            {this.showLikes(picture.likes)}
+           
           </View>
           <TouchableOpacity>
             <Image style={style.comentario} source={require('../../Resources/icons/comentarios.png')} />
@@ -76,6 +76,7 @@ export default class Post extends Component {
             <Image style={style.enviar} source={require('../../Resources/icons/enviar.png')} />
           </TouchableOpacity>
         </View>
+        {this.showLikes(picture.likes)}
         <View style={style.row}>
           <Text style={style.textPic}>{picture.user}  <Text style={style.legend}>{picture.coment}</Text></Text> 
          
@@ -130,13 +131,13 @@ const style = StyleSheet.create({
       fontSize:16,
     },
     comentario:{
-      marginLeft:-15,
-      marginTop:5,
+      marginLeft:-12,
+      marginTop:4,
       width:45,
       height:40,
     },
     enviar:{
-      marginLeft:17,
+      marginLeft:12,
       marginTop:15,
       width:23,
       height:23,
