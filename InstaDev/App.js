@@ -13,7 +13,6 @@ import {
   Image,
   Dimensions,
   ScrollView,
-  FlatList
 } from 'react-native';
 import Post from './src/components/Post'
 import { importNamespaceSpecifier } from '@babel/types';
@@ -54,7 +53,6 @@ render() {
           </Text>
       </View>
     </ScrollView>
-
   );  
 }
 }

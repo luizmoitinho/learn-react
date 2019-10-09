@@ -11,29 +11,43 @@ import {
   View,
   Image,
   Dimensions,  
+  TouchableOpacity
 } from 'react-native';
+import { tsConstructorType } from '@babel/types';
 
 const widthScreen = Dimensions.get('screen').width;
 export default class Post extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+        picture:this.props.ListPhotographs
+    }
+  }
   render() {
+    const{picture} =  this.state;
     return (
       <View >
         <View style={style.cabecalhoPerfil}>
           <Image
-            source={this.props.ListPhotographs.perfil}
+            source={picture.perfil}
             style={style.imgCabecalhoPerfil}
           />
-          <Text style={style.nomeCabecalhoPerfil}>{this.props.ListPhotographs.user}</Text>
+          <Text style={style.nomeCabecalhoPerfil}>{picture.user}</Text>
         </View>
         <Image
-          source={this.props.ListPhotographs.urlPost}
+          source={picture.urlPost}
           style={style.posts}
         />
         <View style={style.panelIcons}>
-          <Image style={style.like} source={require('../../Resources/icons/like.png')} />
-          <Image style={style.comentario} source={require('../../Resources/icons/comentarios.png')} />
-          <Image style={style.enviar} source={require('../../Resources/icons/enviar.png')} />
-
+          <TouchableOpacity>
+             <Image style={style.like} source={require('../../Resources/icons/like.png')} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image style={style.comentario} source={require('../../Resources/icons/comentarios.png')} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image style={style.enviar} source={require('../../Resources/icons/enviar.png')} />
+          </TouchableOpacity>
         </View>
       </View>
      
@@ -45,7 +59,7 @@ const style = StyleSheet.create({
       margin:15,marginTop:30,flexDirection:'row', alignItems:'center'
     },
     imgCabecalhoPerfil:{
-      width:40,height:40,borderRadius:50,marginRight:10
+      width:30,height:30,borderRadius:50,marginRight:10
     },
     nomeCabecalhoPerfil:{fontSize:20},
     posts:{
@@ -53,21 +67,20 @@ const style = StyleSheet.create({
     },
     panelIcons:{
         flexDirection:'row',
-        
     },
     like:{
-      width:80,
+      width:60,
       height:50,
     },
     comentario:{
       marginTop:5,
-      width:70,
+      width:45,
       height:40,
     },
     enviar:{
       marginLeft:20,
-      marginTop:8,
-      width:40,
-      height:40,
+      marginTop:15,
+      width:23,
+      height:23,
     }
   });
