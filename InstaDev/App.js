@@ -23,15 +23,27 @@ render() {
   const  ListPhotographs = [
     {
       id:1,
-      user:'luiz Moitinho',
+      user:'LuizMoitinho',
       perfil:require("./Resources/Img/luizPerfil.jpg"),
       urlPost:require("./Resources/Img/post1.jpg"),
+      coment:'Sem legenda',
+      likes:2,
     },
     {
       id:2,
-      user:'luiz Moitinho',
+      user:'LuizMoitinho',
       perfil:require("./Resources/Img/luizPerfil.jpg"),
       urlPost:require("./Resources/Img/post2.jpg"),
+      coment:'#tbt',
+      likes:0,
+    },
+    {
+      id:3,
+      user:'fehSouza',
+      perfil:require("./Resources/Img/fernandaPerfil.jpg"),
+      urlPost:require("./Resources/Img/fernandaPerfil.jpg"),
+      coment:'Só porque certo alguém disse que tô parecendo uma Holandesa nessa foto',
+      likes:120,
     }
      
   ] 
@@ -78,9 +90,9 @@ const style = StyleSheet.create({
     fontSize:24,
   },
   footer:{
-    borderTopWidth:1,
+    borderTopWidth:2,
     borderTopColor:'#ccc',
-    marginTop:20,
+    marginTop:100,
     width:widthScreen,
     flexDirection:'row',
     alignItems: 'center',
@@ -89,6 +101,6 @@ const style = StyleSheet.create({
   },
   footerCopy:{
     color:'#4C4C4D',
-    fontSize:20,
+    fontSize:18,
   }
 });

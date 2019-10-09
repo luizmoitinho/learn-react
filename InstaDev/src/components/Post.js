@@ -34,6 +34,18 @@ export default class Post extends Component {
     }
     this.setState({picture:pictureRefresh})
   }
+  showLikes(likes){
+    if(likes>0)
+      return (
+          <Text  style={style.textPic}>
+            {likes} {likes>1?'Curtidas':'Curtida'} 
+          </Text>
+      );
+    else 
+      return;
+
+  }
+
   render() {
     const{picture} =  this.state;
     return (
@@ -49,11 +61,14 @@ export default class Post extends Component {
           source={picture.urlPost}
           style={style.posts}
         />
-        <View style={style.panelIcons} >
-          <TouchableOpacity onPress={this.likePicture.bind(this)}>
-             <Image style={ picture.liked? style.liked:style.like } 
-             source={this.loadIconeLike(picture.liked)} />
-          </TouchableOpacity>
+        <View style={style.row}>
+          <View style={style.column}>
+            <TouchableOpacity onPress={this.likePicture.bind(this)}>
+              <Image style={ picture.liked? style.liked:style.like } 
+              source={this.loadIconeLike(picture.liked)} />
+            </TouchableOpacity>
+            {this.showLikes(picture.likes)}
+          </View>
           <TouchableOpacity>
             <Image style={style.comentario} source={require('../../Resources/icons/comentarios.png')} />
           </TouchableOpacity>
@@ -61,6 +76,11 @@ export default class Post extends Component {
             <Image style={style.enviar} source={require('../../Resources/icons/enviar.png')} />
           </TouchableOpacity>
         </View>
+        <View style={style.row}>
+          <Text style={style.textPic}>{picture.user}  <Text style={style.legend}>{picture.coment}</Text></Text> 
+         
+        </View>
+
       </View>
 
     );
@@ -81,8 +101,11 @@ const style = StyleSheet.create({
     posts:{
       width:widthScreen,height:widthScreen
     },
-    panelIcons:{
+    row:{
         flexDirection:'row',
+    },
+    column:{
+      flexDirection:'column',
     },
     like:{
       width:60,
@@ -90,20 +113,30 @@ const style = StyleSheet.create({
       
     },
     liked:{
+      marginBottom:3,
       marginRight:9,
       marginTop:2,
       marginLeft:6,
       width:46,
       height:45,
     },
+    textPic:{
+      fontSize:16,
+      marginLeft:8,
+      fontWeight:'bold'
+    },
+    legend:{
+      fontWeight:'normal',
+      fontSize:16,
+    },
     comentario:{
-   
+      marginLeft:-15,
       marginTop:5,
       width:45,
       height:40,
     },
     enviar:{
-      marginLeft:20,
+      marginLeft:17,
       marginTop:15,
       width:23,
       height:23,
