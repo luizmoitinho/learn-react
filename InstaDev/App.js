@@ -25,14 +25,13 @@ render() {
       id:1,
       user:'luiz Moitinho',
       perfil:require("./Resources/Img/luizPerfil.jpg"),
-      urlPost:require("./Resources/Img/post1.jpg")
-
+      urlPost:require("./Resources/Img/post1.jpg"),
     },
     {
       id:2,
       user:'luiz Moitinho',
       perfil:require("./Resources/Img/luizPerfil.jpg"),
-      urlPost:require("./Resources/Img/post2.jpg")
+      urlPost:require("./Resources/Img/post2.jpg"),
     }
      
   ] 
@@ -44,7 +43,7 @@ render() {
       </View>
       {
        ListPhotographs.map((pic)=>
-        <Post key={ListPhotographs.id} ListPhotographs={pic} />
+        <Post key={pic.id} ListPhotographs={pic}/>
       )
       }
       <View style={style.footer}>
